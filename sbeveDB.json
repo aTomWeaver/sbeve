@@ -240,8 +240,14 @@
     "worrisome",
     "zealous"
   ],
-  "qual": {
-    "aspect": ["rhythmically", "harmonically", "timbrally", "atmospherically"],
+  "music": {
+    "aspect": [
+      "rhythmically",
+      "harmonically",
+      "timbrally",
+      "atmospherically",
+      "texturally"
+    ],
     "descriptor": [
       "simple",
       "complex",
@@ -272,7 +278,9 @@
       "binary",
       "minimalist",
       "maximalist",
-      "serial"
+      "serial",
+      "united",
+      "divided"
     ]
   },
   "eno": [
