@@ -20,7 +20,7 @@ function getToneRow(size=12) {
 }
 
 function getMatrix(toneRow=getToneRow()) {
-  let matrix = [...toneRow]
+  let matrix = [...toneRow];
   let buffer = [...toneRow];
   for (let i = 0; i < toneRow.length; i++) {
     buffer = buffer.map((elm) => elm = mod12(elm + 1))
