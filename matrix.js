@@ -30,3 +30,5 @@ function getMatrix(toneRow=getToneRow()) {
 }
 
 console.log(getMatrix())
+
+export {getMatrix}
