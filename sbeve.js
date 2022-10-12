@@ -1,18 +1,28 @@
+#!/usr/bin/env node
 import db from "./sbeveDB.json" assert { type: "json" };
 
-let getRandElm = (ary, qty = 1) => {
-  let vals = [];
-  ary == db.eno ? vals.push("\n# Oblique Strategies") : vals.push("\n#");
-  for (let i = 0; i < qty; i++) {
-    let newElm = ary[Math.floor(Math.random() * ary.length)];
-    vals.includes(`\t- ${newElm}`) ? i-- : vals.push("\t- " + newElm); // no duplicate values
-  }
-  return vals.join("\n");
-};
+const getRandElm = (ary) => ary[Math.floor(Math.random() * ary.length)];
+const getPrompt = () => '>> create something ' + getRandElm(db.adjective) + ' and ' + getRandElm(db.music.aspect) + " " + getRandElm(db.music.descriptor);
+const getEnoCard = () => enoSays[0] + getRandElm(db.eno) + enoSays[1];
+const enoSays = ['>> Eno says:\n\t ¸¸♬·¯·♩¸¸♪·¯·♫¸¸', '¸¸♫·¯·♪¸¸♩·¯·♬¸¸']
 
-function render() {
-  
+function parse() {
+  let stagedStrings = [];
+  const args = process.argv;
+  const flags = args.filter(arg => arg.split("").includes("-"));
+  if (args[2] === undefined) {
+    stagedStrings.push(getEnoCard());
+    stagedStrings.push(getPrompt());
+  } else if (args.includes('-p')) {
+    stagedStrings.push(getPrompt());
+  } else if (args.includes('-e')) {
+    stagedStrings.push(getEnoCard());
+  }
+  render(stagedStrings)
 }
 
-console.log(getRandElm(db.eno) + "\n");
-console.log(getRandElm(db.music.descriptor, 5));
+function render(strings) {
+  console.log("\n" + strings.join("\n\n") + "\n")
+}
+
+parse()
