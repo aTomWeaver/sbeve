@@ -5,20 +5,12 @@ function mod12(num) {
   return num;
 }
 
-function shuffleArray(array) {
-  // got this shuffle function from https://www.w3docs.com/snippets/javascript/how-to-randomize-shuffle-a-javascript-array.html
-  let curId = array.length;
-  // There remain elements to shuffle
-  while (0 !== curId) {
-    // Pick a remaining element
-    let randId = Math.floor(Math.random() * curId);
-    curId -= 1;
-    // Swap it with the current element.
-    let tmp = array[curId];
-    array[curId] = array[randId];
-    array[randId] = tmp;
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
   }
-  return array;
+return arr;
 }
 
 function getToneRow(size=12) {
@@ -37,4 +29,4 @@ function getMatrix(toneRow=getToneRow()) {
   return matrix;
 }
 
-getMatrix()
+console.log(getMatrix())
