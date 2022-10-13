@@ -25,7 +25,6 @@ function generateToneRow(size = 12) {
 
 function displayMatrix(matrix) {
   const rowLength = Math.sqrt(matrix.length)
-  console.log(rowLength)
   let buffer = [];
   console.log("[\n");
   for (let i = 0; i < matrix.length + 1; i++) {
