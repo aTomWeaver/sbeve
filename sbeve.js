@@ -1,4 +1,5 @@
-#!/usr/bin/env node
+#!/usr/bin/env node 
+
 import db from "./sbeveDB.json" assert { type: "json" };
 import { getMatrix } from "./matrix.js";
 
@@ -18,7 +19,6 @@ function parse() {
   const CLIargs = process.argv;
   const flags = CLIargs.filter((arg) => arg.split("").includes("-")).join("").split("");
   const fnArgs = "" // CLI args with flags and first two indexes taken out
-  console.log(flags)
   if (CLIargs[2] === undefined) {
     stagedStrings.push(getEnoCard());
     stagedStrings.push(getPrompt());
