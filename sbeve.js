@@ -15,18 +15,23 @@ const enoSays = [">> Eno says:\n\t ¸¸♬·¯·♩¸¸♪·¯·♫¸¸", "¸¸�
 
 function parse() {
   let stagedStrings = [];
-  const args = process.argv;
-  const flags = args.filter((arg) => arg.split("").includes("-"));
-  if (args[2] === undefined) {
+  const CLIargs = process.argv;
+  const flags = CLIargs.filter((arg) => arg.split("").includes("-")).join("").split("");
+  const fnArgs = "" // CLI args with flags and first two indexes taken out
+  console.log(flags)
+  if (CLIargs[2] === undefined) {
     stagedStrings.push(getEnoCard());
     stagedStrings.push(getPrompt());
-  } else if (args.includes("-prompt")) {
+  } 
+  if (flags.includes("p")) {
     stagedStrings.push(getPrompt());
-  } else if (args.includes("-eno")) {
+  } 
+  if (flags.includes("e")) {
     stagedStrings.push(getEnoCard());
-  } else if (args.includes('-matrix')) {
-    if (args[3]) {
-      let row = args[3].split(",")
+  } 
+  if (flags.includes('m')) {
+    if (CLIargs[3]) {
+      let row = CLIargs[3].split(",")
       row = row.map(elm => parseInt(elm.trim()))
       getMatrix(row);
     } else {
