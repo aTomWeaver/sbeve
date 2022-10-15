@@ -1,6 +1,6 @@
 const pitchClasses = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
-let mod12 = (num) => {
+let _mod12 = (num) => {
   if (num > 11) {
     while (num > 11) num -= 12;
   } else if (num < 0) {
@@ -9,7 +9,7 @@ let mod12 = (num) => {
   return num;
 };
 
-function shuffleArray(arr) {
+let _shuffleArray = (arr) => {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [arr[i], arr[j]] = [arr[j], arr[i]];
@@ -18,7 +18,7 @@ function shuffleArray(arr) {
 }
 
 function generateToneRow(size = 12) {
-  const toneRow = shuffleArray(pitchClasses);
+  const toneRow = _shuffleArray(pitchClasses);
   for (let i = size; i < 12; i++) toneRow.pop();
   return toneRow;
 }
@@ -44,7 +44,7 @@ function generateMatrix(toneRow) {
   let buffer = [...toneRow];
   for (let i = 0; i < toneRow.length - 1; i++) {
     let inversionInterval = matrix[i] - matrix[i + 1];
-    buffer = buffer.map((elm) => mod12(elm += inversionInterval));
+    buffer = buffer.map((elm) => _mod12(elm += inversionInterval));
     matrix.push(...buffer);
   }
   return matrix;
@@ -56,4 +56,11 @@ function getMatrix(toneRow = generateToneRow(), rowSize) {
   displayMatrix(newMatrix);
 }
 
-export { getMatrix };
+function parseCookie(arr) {
+  let args = arr.split(',');
+  args = args.map(elm => parseInt(elm))
+  .map(elm => _mod12(elm))
+  console.log(args)
+}
+
+export { getMatrix, parseCookie };

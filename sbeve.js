@@ -1,7 +1,7 @@
 #!/usr/bin/env node 
 
 import db from "./sbeveDB.json" assert { type: "json" };
-import { getMatrix } from "./matrix.js";
+import { getMatrix, parseCookie } from "./setTheory.js";
 
 const getRandElm = (ary) => ary[Math.floor(Math.random() * ary.length)];
 const getPrompt = () =>
@@ -28,6 +28,9 @@ function parse() {
   } 
   if (flags.includes("e")) {
     stagedStrings.push(getEnoCard());
+  } 
+  if (flags.includes("c")) {
+    parseCookie(CLIargs[3]);
   } 
   if (flags.includes('m')) {
     if (CLIargs[3]) {
