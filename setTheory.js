@@ -1,4 +1,13 @@
 const pitchClasses = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+const notesWithSharps = ['C ', 'C#', 'D ', 'D#', 'E ', 'F ', 'F#', 'G ', 'G#', 'A ', 'A#', 'B ']
+
+let _convertToNotes = (matrix, type) => {
+  for (let i = 0; i < matrix.length; i++) {
+    let curr = matrix[i];
+    matrix[i] = notesWithSharps[curr]
+  }
+  return matrix;
+}
 
 let _mod12 = (num) => {
   if (num > 11) {
@@ -51,9 +60,10 @@ function generateMatrix(toneRow) {
 }
 
 function getMatrix(toneRow = generateToneRow(), rowSize) {
-  if (rowSize) toneRow = generateToneRow(rowSize)
+  // if (rowSize) toneRow = generateToneRow(rowSize)
   let newMatrix = generateMatrix(toneRow);
-  displayMatrix(newMatrix);
+  let convertedMatrix = _convertToNotes(newMatrix);
+  displayMatrix(convertedMatrix)
 }
 
 function parseCookie(arr) {
@@ -63,4 +73,4 @@ function parseCookie(arr) {
   return args;
 }
 
-export { getMatrix, parseCookie };
+export { getMatrix, parseCookie, _convertToNotes };

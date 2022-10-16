@@ -1,7 +1,7 @@
 #!/usr/bin/env node 
 
 import db from "./sbeveDB.json" assert { type: "json" };
-import { getMatrix, parseCookie } from "./setTheory.js";
+import { getMatrix, parseCookie, _convertToNotes } from "./setTheory.js";
 
 const getRandElm = (ary) => ary[Math.floor(Math.random() * ary.length)];
 const getPrompt = () =>
@@ -42,6 +42,7 @@ function parse() {
       getMatrix();
     }
   }
+  if (flags.includes('cc'))
   render(stagedStrings);
 }
 

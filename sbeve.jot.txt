@@ -1,3 +1,7 @@
 Sat Oct 15 2022 16:35:43
-	come up with a way to determine appropriate enharmonics to use
+	[X] come up with a way to determine appropriate enharmonics to use
+
+
+Sun Oct 16 2022 16:44:22
+	create a chord expander that will find the center of a collection of notes and expand all notes around it by a specified amount of semitones
 
