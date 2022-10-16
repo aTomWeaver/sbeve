@@ -60,7 +60,7 @@ function parseCookie(arr) {
   let args = arr.split(',');
   args = args.map(elm => parseInt(elm))
   .map(elm => _mod12(elm))
-  console.log(args)
+  return args;
 }
 
 export { getMatrix, parseCookie };

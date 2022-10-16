@@ -30,7 +30,8 @@ function parse() {
     stagedStrings.push(getEnoCard());
   } 
   if (flags.includes("c")) {
-    parseCookie(CLIargs[3]);
+    if (!CLIargs[3]) return console.log("no arguments passed!")
+    getMatrix(parseCookie(CLIargs[3]));
   } 
   if (flags.includes('m')) {
     if (CLIargs[3]) {
